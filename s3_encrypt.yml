@@ -1,8 +1,0 @@
-policies:
-  - name: s3_encrypt
-    resource: s3
-    description: |
-      s3 buckets without encryption
-    filters:
-      - type: no-encryption-statement
-        

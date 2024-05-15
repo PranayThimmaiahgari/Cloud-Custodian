@@ -1,3 +1,0 @@
-queue_url: https://sqs.us-east-1.amazonaws.com/674167431508/Pranay_CloudCustodian
-role: arn:aws:iam::674167431508:role/Pranay_CloudCustodian
-from_address: pranay.thimmaiahgari@hitachids.com
