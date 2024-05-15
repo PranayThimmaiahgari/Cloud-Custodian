@@ -1,0 +1,20 @@
+policies:
+  - name: empty-s3-buckets-over-60-days-old-notify
+    resource: s3
+    filters:
+      - type: value
+        value_type: age
+        key: CreationDate
+        value: 30
+        op: greater-than
+    actions:
+      - type: notify
+        template: default
+        priority_header: '2'
+        subject: testing the c7n mailer
+        to:
+          - charithasivavenkata.kanuri@hitachids.com
+        format: json
+        transport:
+          type: sns
+          topic: arn:aws:sns:us-east-1:674167431508:Charitha_CloudCustodian

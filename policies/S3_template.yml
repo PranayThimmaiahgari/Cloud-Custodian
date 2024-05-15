@@ -1,0 +1,9 @@
+templates:
+  s3_bucket_details:
+    subject: 'S3 Bucket Details'
+    template: |
+      {% for r in resources %}
+      Bucket Name: {{ r['Name'] }}
+      Region: {{ r['Region'] }}
+      Created Date: {{ r['CreationDate'] }}
+      {% endfor %}

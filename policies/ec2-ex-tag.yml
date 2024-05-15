@@ -1,0 +1,19 @@
+policies:
+  - name: ec2-instances-without-expiration-tag
+    resource: ec2
+    description: |
+      Reports EC2 instances that do not have an expiration tag.
+    filters:
+      - or:
+        - type: value
+          key: "tag:ExpirationDate"
+          value: ""
+    actions:
+      - type: notify
+        template: default
+        priority_header: '2'
+        to:
+          - charithasivavenkata.kanuri@hitachids.com
+        transport:
+          type: sns
+          topic: arn:aws:sns:us-east-1:674167431508:Charitha_CloudCustodian
