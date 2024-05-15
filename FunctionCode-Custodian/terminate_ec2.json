@@ -1,0 +1,23 @@
+{
+  "execution-options": {},
+  "policies": [
+    {
+      "name": "terminate_instance",
+      "resource": "ec2",
+      "description": "Terminate EC2 instance with specific name ",
+      "filters": [
+        {
+          "State.Name": "running"
+        },
+        {
+          "tag:Name": "P1"
+        }
+      ],
+      "actions": [
+        {
+          "type": "terminate"
+        }
+      ]
+    }
+  ]
+}

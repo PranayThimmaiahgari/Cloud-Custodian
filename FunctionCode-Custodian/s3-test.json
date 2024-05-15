@@ -1,0 +1,27 @@
+{
+  "policies": [
+    {
+      "name": "s3-inactive-buckets",
+      "resource": "s3",
+      "mode": {
+        "type": "cloudtrail",
+        "events": [
+          {
+            "event": "PutObject",
+            "ids": "requestParameters.bucketName",
+            "source": "s3.amazonaws.com"
+          }
+        ]
+      },
+      "filters": [
+        {
+          "type": "value",
+          "key": "CloudTrailEventTime",
+          "value_type": "age",
+          "value": 30,
+          "op": "greater-than"
+        }
+      ]
+    }
+  ]
+}

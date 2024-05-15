@@ -1,0 +1,32 @@
+{
+    "policies": [
+        {
+            "name": "ec2-instances-missing-environment-tag",
+            "resource": "ec2",
+            "filters": [
+                {
+                    "type": "value",
+                    "key": "tag:environment",
+                    "op": "equal",
+                    "value": null
+                }
+            ],
+            "actions": [
+                {
+                    "type": "notify",
+                    "template": "default",
+                    "priority_header": "2",
+                    "to": [
+                        "charithasivavenkata.kanuri@hitachids.com"
+                    ],
+                    "transport": {
+                        "type": "sqs",
+                        "queue": "arn:aws:sqs:us-east-1:674167431508:Charitha_CloudCustodian"
+                    },
+                    "subject": "EC2 instances without environment tag",
+                    "body": "The following EC2 instances have been fetched"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+  "execution-options": {},
+  "policies": [
+    {
+      "name": "offhours-stop-dev-instances",
+      "resource": "ec2",
+      "description": "Stop dev env EC2 instances during off hours",
+      "filters": [
+        {
+          "tag:Environment": "dev"
+        },
+        {
+          "type": "offhour",
+          "default_tz": "gmt",
+          "offhour": 18
+        }
+      ],
+      "actions": [
+        "stop"
+      ]
+    }
+    // {
+    //   "name": "onhours-start-dev-instances",
+    //   "resource": "ec2",
+    //   "description": "Start dev env EC2 instances during onhours",
+    //   "filters": [
+    //     {
+    //       "tag:Environment": "dev"
+    //     },
+    //     {
+    //       "type": "onhour",
+    //       "default_tz": "gmt",
+    //       "onhour": 6
+    //     }
+    //   ],
+    //   "actions": [
+    //     "start"
+    //   ]
+    // }
+  ]
+}
