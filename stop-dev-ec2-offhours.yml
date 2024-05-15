@@ -1,0 +1,11 @@
+policies:
+  - name: offhours-stop-dev-instances
+    resource: ec2
+    description: Stop dev env EC2 instances during off hours
+    filters:
+      - "tag:Environment": dev
+      - type: offhour
+        default_tz: gmt
+        offhour: 18
+    actions:
+      - stop

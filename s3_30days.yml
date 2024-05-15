@@ -1,0 +1,21 @@
+policies:
+  - name: s3-buckets-older-than-30-days
+    resource: s3
+    filters:
+      - type: value
+        key: CreationDate
+        value_type: age
+        op: greater-than
+        value: 30
+    actions:
+      - type: notify
+        template: default
+        priority_header: '1'
+        subject: S3 Buckets Inactive for 30 Days
+        violation_desc: The following S3 buckets have been inactive for 30 days:
+        action_desc: Please review these buckets and consider removing or archiving them if they are no longer needed.
+        to: pranay.thimmaiahgari@hitachids.com
+        transport:
+          type: sqs
+          queue: https://sqs.us-east-1.amazonaws.com/674167431508/Pranay_CloudCustodian
+          region: us-east-1

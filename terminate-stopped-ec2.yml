@@ -1,0 +1,11 @@
+policies:
+- name: terminate-stopped-instances
+  resource: ec2
+  description: Terminate stopped instances for the last 48 hours
+  filters:
+  - State.Name: stopped
+  - type: state-age
+    op: greater-than
+    days: 2
+  actions:
+  - terminate
