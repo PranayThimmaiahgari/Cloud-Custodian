@@ -1,0 +1,21 @@
+policies:
+  - name: find-large-instances
+    resource: aws.ec2
+    filters:
+      - type: value
+        key: InstanceType
+        op: not-in
+        value:
+          - t2.micro
+          - t3.micro
+          - t3a.micro
+          - t4g.micro
+    actions:
+      - type: notify
+        template: default
+        priority_header: '2'
+        to:
+          - charithasivavenkata.kanuri@hitachids.com
+        transport:
+          type: sns
+          topic: arn:aws:sns:us-east-1:674167431508:Charitha_CloudCustodian
