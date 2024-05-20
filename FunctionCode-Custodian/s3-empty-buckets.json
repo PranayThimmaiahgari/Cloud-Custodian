@@ -25,7 +25,7 @@
           "type": "notify",
           "template": "default",
           "priority_header": "2",
-          "subject": "testing the c7n mailer",
+          "subject": "fetching s3 details",
           "to": [
             "pranay.thimmaiahgari@hitachids.com"
           ],
