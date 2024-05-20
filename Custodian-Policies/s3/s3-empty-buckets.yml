@@ -1,12 +1,19 @@
 policies:
-  - name: empty-s3-buckets-over-60-days-old-notify
+  - name: s3-empty-buckets-48hrs
     resource: s3
+    description: |
+      Fetch S3 buckets that have been empty (no objects in them) for more than 48 hours.
     filters:
       - type: value
-        value_type: age
         key: CreationDate
-        value: 30
-        op: greater-than
+        value_type: age
+        op: less-than
+        value: 2
+      - type: metrics
+        name: NumberOfObjects
+        value: 0
+        statistics: Average
+        days: 2
     actions:
       - type: notify
         template: default
