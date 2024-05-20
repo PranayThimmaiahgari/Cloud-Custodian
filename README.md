@@ -43,7 +43,7 @@ The following are the Cloud Custodian policies written in YAML format:
    - This policy checks for S3 buckets that do not have an encryption statement, implying they are not encrypted.
 
 3. **s3-empty-buckets.yml**:
-   - This policy checks for S3 buckets that have been empty (no objects in them) for more than 48hrs and sends notifications about these buckets.
+   - This policy checks for S3 buckets that have been empty (no objects in them) for more than 30days and sends notifications about these buckets.
 
 ---
 
