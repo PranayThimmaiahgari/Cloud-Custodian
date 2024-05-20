@@ -1,27 +1,27 @@
 policies:
-  - name: s3-empty-buckets-48hrs
+  - name: s3-empty-buckets-30days
     resource: s3
     description: |
-      Fetch S3 buckets that have been empty (no objects in them) for more than 48 hours.
+      Fetch S3 buckets that have been empty (no objects in them) for more than 30 days.
     filters:
       - type: value
         key: CreationDate
         value_type: age
         op: less-than
-        value: 2
+        value: 30
       - type: metrics
         name: NumberOfObjects
         value: 0
         statistics: Average
-        days: 2
+        days: 30
     actions:
       - type: notify
         template: default
         priority_header: '2'
-        subject: testing the c7n mailer
+        subject: fetching the s3 bucket details
         to:
-          - charithasivavenkata.kanuri@hitachids.com
+          - pranay.thimmaiahgari@hitachids.com
         format: json
         transport:
           type: sns
-          topic: arn:aws:sns:us-east-1:674167431508:Charitha_CloudCustodian
+          topic: arn:aws:sns:us-east-1:674167431508:pranay_cc
