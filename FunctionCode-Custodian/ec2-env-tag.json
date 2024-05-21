@@ -6,7 +6,7 @@
             "filters": [
                 {
                     "type": "value",
-                    "key": "tag:environment",
+                    "key": "tag:Environment",
                     "op": "equal",
                     "value": null
                 }
