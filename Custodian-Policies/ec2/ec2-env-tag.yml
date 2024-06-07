@@ -15,4 +15,8 @@ policies:
         transport:
           type: sqs
           queue: arn:aws:sqs:us-east-1:674167431508:Charitha_CloudCustodian
+          sender_email: charithasivavenkata.kanuri@hitachids.com,
+          receiver_email: charithasivavenkata.kanuri@hitachids.com,
+          subject: Required Resources- EC2 instances without environment tag
+          body_text: Hello,\n\nThe EC2 Instances without environment tag have been fetched successfully. Please do find the resources attached.\n\n\n\nThanks & Regards,\nTeam HCAP
 
