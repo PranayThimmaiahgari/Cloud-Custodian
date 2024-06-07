@@ -8,4 +8,16 @@ policies:
     op: greater-than
     days: 2
   actions:
-  - terminate
+      - type: notify
+        template: default
+        priority_header: '2'
+        to:
+          - charithasivavenkata.kanuri@hitachids.com
+        transport:
+          type: sqs
+          type: sqs,
+          queue: arn:aws:sqs:us-east-1:674167431508:Charitha_CloudCustodian,
+          sender_email: charithasivavenkata.kanuri@hitachids.com,
+          receiver_email: charithasivavenkata.kanuri@hitachids.com,
+          subject: Action Required- EC2 instances in stopped state,
+          body_text: Hello,\n\nPlease find the attachment with EC2 Instances in stopped state for more than 48 hours. If any of the EC2 instance belongs to you please do take the necessary action within next 48 hours. \n\nIf no action is taken, The instance will be terminated.\n\n\n\nThanks & Regards,\nTeam HCAP
