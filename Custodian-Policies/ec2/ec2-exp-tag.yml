@@ -15,5 +15,9 @@ policies:
         to:
           - charithasivavenkata.kanuri@hitachids.com
         transport:
-          type: sns
-          topic: arn:aws:sns:us-east-1:674167431508:Charitha_CloudCustodian
+          type: sqs
+          queue: arn:aws:sqs:us-east-1:674167431508:Charitha_CloudCustodian
+          sender_email: charithasivavenkata.kanuri@hitachids.com,
+          receiver_email: charithasivavenkata.kanuri@hitachids.com,
+          subject: Required Resources- EC2 instances without expiration tag
+          body_text: Hello,\n\nThe EC2 Instances without expiration tag have been fetched successfully. Please do find the resources attached.\n\n\n\nThanks & Regards,\nTeam HCAP
